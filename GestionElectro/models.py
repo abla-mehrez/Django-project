@@ -1,8 +1,5 @@
 from django.db import models
-from django.forms import IntegerField
-
-
-
+from django.contrib.auth.models import User
 # Create your models here.
 #class produit
 class Produit(models.Model):
@@ -60,17 +57,16 @@ class Contact(models.Model):
     msg=models.TextField(  blank=False)
 #classcontact
 
-total=IntegerField
 
+#class pour Facture
 class Paiement(models.Model):
     code=models.CharField(max_length=100)
     date=models.DateTimeField(null=True)
-    product=models.OneToOneField(Produit,on_delete=models.SET_NULL,null=True)
+    product=models.ForeignKey(Produit,on_delete=models.CASCADE,blank=True)
     client=models.ForeignKey(Client,on_delete=models.CASCADE,blank=True)  
     quantité=models.IntegerField(default=0)
     prixTotal= models.FloatField(default=0)
-   
-
+   #fonction de calcul and save du prix total
     def calc_total(self):
        pass
        
@@ -78,9 +74,22 @@ class Paiement(models.Model):
        total= self.product.prix *self.quantité
        self.prixTotal = total
        super(Paiement, self).save()
-
-
-       
     def __str__(self):
         return self.code
-  
+#class pour Facture
+
+#class pour cartes
+# class Cart(models.Model):
+#     user=models.ForeignKey(User,on_delete=models.CASCADE)
+#     ordered=models.BooleanField(default=False)
+#     total_price=models.FloatField(default=0)
+
+
+# class CartItem(models.Model):
+#     cart=models.ForeignKey(Cart,on_delete=models.cascade)
+#     user=models.ForeignKey(User,on_delete=models.CASCADE)
+#     cartProduct=models.ForeignKey(Produit,on_delete=models.cascade)
+#     cartPrice=models.FloatField(default=0)
+#     total_items=models.IntegerField(default=0)
+
+#class pour cartes

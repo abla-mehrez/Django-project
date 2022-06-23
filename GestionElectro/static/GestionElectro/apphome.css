@@ -362,3 +362,25 @@ label{
 textarea{
   width: 50rem;
 }
+
+@media (max-width:50em){
+  body{
+    background-color: red;
+  }
+  footer input, footer button {
+    background-color: green;
+    width: 40%;
+    
+  }
+  footer{
+    position: relative;
+  }
+  footer button{
+    background-color: black;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    margin-left: 0;
+
+  }
+}
