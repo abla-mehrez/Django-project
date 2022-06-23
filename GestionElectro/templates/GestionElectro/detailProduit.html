@@ -1,0 +1,26 @@
+{% load static %} 
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'ElectroDjango/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css"  href="{% static 'GestionElectro/detail.css' %}"/>
+</head>
+<body>
+    <header>
+        <a href="{% url 'apphome'%}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Home_free_icon.svg/2048px-Home_free_icon.svg.png"  alt="aaaaaaaaaaaaa" /></a> 
+    </header>
+    <section>
+        <div class="row">
+            <div class="col">
+                <img src="{{productbyid.image.url}}" alt="">
+            </div>
+            <div class="col">
+                <h2>{{productbyid.nom}}</h2>
+                <p>{{productbyid.description}}</p>
+            </div>
+        </div>
+        
+        
+    </section>  
+</body>
+</html>

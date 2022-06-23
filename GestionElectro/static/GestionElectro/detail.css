@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.row{
+    padding: 0rem 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    width: 70%;
+}
+
+h3, p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 2rem 0;
+}
+
+header img {
+    width: 3rem;
+    height: 3rem;
+    margin: 2rem;
+}
+

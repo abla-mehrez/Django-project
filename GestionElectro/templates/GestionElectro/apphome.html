@@ -1,0 +1,148 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+   <link rel="stylesheet" type="text/css" 
+    href="{% static 'ElectroDjango/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css"  href="{% static 'GestionElectro/apphome.css' %}"/>
+    
+  </head>
+  <body>
+    
+    <nav class="navbarr">
+    <form action="" method="post">
+      {% csrf_token %}
+      <div>
+
+        <input type="submit" value="LG"     name="marque" class="nav-link">
+        <input type="submit" value="Condor"  name="marque" class="nav-link">
+        <input type="submit" value="MontBlanc"  name="marque" class="nav-link">
+        <input type="submit" value="BIOLUX"  name="marque" class="nav-link">
+        <input type="submit" value="WHIRLPOOL"  name="marque" class="nav-link">
+        <input type="submit" value="COALA"  name="marque" class="nav-link">
+      </div>
+    </form>
+    
+  </nav>
+
+    <div class="row">
+    {% for i in ProductList %}
+    <a href="{% url 'details'  i.id %}">
+
+
+  <div class="col col-lg-4 sm-2">
+   <div class="container page-wrapper">
+    <div class="page-inner">
+      <div class="row">
+        <div class="el-wrapper">
+          <div class="box-up">
+            <img class="img" src="{{i.image.url}}" alt="" style="width:164px;height:194px;">
+            <div class="img-info">
+              <div class="info-inner">
+                <span class="p-name">{{i.nom}}</span>
+                <span class="p-company">{{i.reference}}</span>
+              </div>
+              <div class="a-size">marque : <span class="size">{{i.marque}}</span></div>
+            </div>
+          </div>
+  
+          <div class="box-down">
+            <div class="h-bg">
+              <div class="h-bg-inner"></div>
+            </div>
+  
+            <a class="cart" href="#">
+              <span class="price">{{i.prix}} DT</span>
+              <span class="add-to-cart">
+                <span class="txt">Add in cart</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+</a>
+
+
+<br> <br> <br>
+<!--tryinyg dropdowns-->
+
+<!--tryinyg dropdowns-->
+
+<!--Récupération des produits en fonction de la marque-->
+<div class="row">
+  {% for i in marque %}
+  <a href="{% url 'details'  i.id %}">
+  <div class="col col-lg-4 sm-2">
+<div class="container page-wrapper">
+    <div class="page-inner">
+      <div class="row">
+        <div class="el-wrapper">
+          <div class="box-up">
+            <img class="img" src="{{i.image.url}}" alt="" style="width:164px;height:194px;">
+            <div class="img-info">
+              <div class="info-inner">
+                <span class="p-name">{{i.nom}}</span>
+                <span class="p-company">{{i.reference}}</span>
+              </div>
+              <div class="a-size">marque : <span class="size">{{i.marque}}</span></div>
+            </div>
+          </div>
+  
+          <div class="box-down">
+            <div class="h-bg">
+              <div class="h-bg-inner"></div>
+            </div>
+  
+            <a class="cart" href="{#}">
+              <span class="price">{{i.prix}} DT</span>
+              <span class="add-to-cart">
+                <span class="txt">Add in cart</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</a>
+</div>
+<div>
+  
+</div>
+
+<footer>
+  <form method="post" action="{% url 'contact' %}">
+    {% csrf_token %}
+    <p>
+        <label>firstname: </label>
+        <input type="text" name="firstname" >
+    </p>
+
+    <p>
+        <label>lastname: </label>
+    <input type="text" name="lastname">
+    </p>
+
+    <p>
+        <label>Email: </label>
+    <input type="email" name="email">
+    </p>
+
+    <p>
+        <label>Message: </label>
+    <textarea type="text" name="message"></textarea>
+    </p>
+
+    <button type="submit" value="envoyer">Envoyer</button>
+</form>
+</footer>
+</body>
